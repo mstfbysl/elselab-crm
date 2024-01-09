@@ -1,0 +1,35 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('fix_assets', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedInteger('purchase_invoice_item_id');
+            $table->unsignedInteger('purchase_invoice_id');
+            $table->date('valid_date');
+            $table->string('comment')->nullable(true);
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('fix_assets');
+    }
+};

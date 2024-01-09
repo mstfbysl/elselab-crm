@@ -1,0 +1,141 @@
+{
+    "menu": [
+        {
+            "permission_id": 22,
+            "url": "/projects",
+            "name": "Projects",
+            "icon": "bi bi-kanban",
+            "slug": "frontend.projects"
+        },
+        {
+            "permission_id": 13,
+            "url": "/purchase-invoices",
+            "name": "Purchases",
+            "icon": "bi bi-receipt",
+            "slug": "frontend.purchase_invoices"
+        },
+        {
+            "permission_id": 26,
+            "url": "/invoices",
+            "name": "Invoices",
+            "icon": "bi bi-file-text",
+            "slug": "frontend.invoices"
+        },
+        {
+            "permission_id": 17,
+            "url": "/warehouse",
+            "name": "Warehouse",
+            "icon": "bi bi-boxes",
+            "slug": "frontend.warehouse"
+        },
+        {
+            "permission_id": 18,
+            "url": "/rentals",
+            "name": "Rentals",
+            "icon": "bi bi-arrow-repeat",
+            "slug": "frontend.rentals"
+        },
+        {
+            "permission_id": 39,
+            "url": "/services",
+            "name": "Services",
+            "icon": "bi bi-wrench",
+            "slug": "frontend.services"
+        },
+        {
+            "permission_id": 9,
+            "url": "/clients",
+            "name": "Clients",
+            "icon": "bi bi-people",
+            "slug": "frontend.clients"
+        },
+        {
+            "permission_id": 32,
+            "name": "Company",
+            "icon": "bi bi-building",
+            "slug": "",
+            "badgeClass": "badge rounded-pill badge-light-danger ms-auto me-1",
+            "submenu": [
+            {
+                "permission_id": 32,
+                "url": "/company-expenses",
+                "name": "Expenses",
+                "icon": "bi bi-cash",
+                "slug": "frontend.company_expenses"
+            },
+            {
+                "permission_id": 35,
+                "url": "/user-payments",
+                "name": "User Payments",
+                "icon": "bi bi-person-check",
+                "slug": "frontend.user_payments"
+            },
+            {
+                "permission_id": 38,
+                "url": "/fix-assets",
+                "name": "Fix Assets",
+                "icon": "bi bi-clipboard-data",
+                "slug": "frontend.fix_assets"
+            }
+            ]
+        },
+        {
+            "permission_id": 2,
+            "name": "Administration",
+            "icon": "bi bi-lock",
+            "slug": "",
+            "badgeClass": "badge rounded-pill badge-light-danger ms-auto me-1",
+            "submenu": [
+                {
+                    "permission_id": 3,
+                    "url": "/administration/settings",
+                    "name": "Settings",
+                    "icon": "bi bi-gear",
+                    "slug": "frontend.administration.settings"
+                },
+                {
+                    "permission_id": 5,
+                    "url": "/administration/invoice-series",
+                    "name": "Invoice Series",
+                    "icon": "bi bi-123",
+                    "slug": "frontend.administration.invoice_series"
+                },
+                {
+                    "permission_id": 6,
+                    "url": "/administration/currencies",
+                    "name": "Currencies",
+                    "icon": "bi bi-currency-exchange",
+                    "slug": "frontend.administration.currencies"
+                },
+                {
+                    "permission_id": 23,
+                    "url": "/administration/labels",
+                    "name": "Labels",
+                    "icon": "bi bi bi-bookmarks-fill",
+                    "slug": "frontend.administration.labels"
+                },
+                {
+                    "permission_id": 23,
+                    "url": "/administration/statuses",
+                    "name": "Statuses",
+                    "icon": "bi bi-bar-chart-steps",
+                    "slug": "frontend.administration.statuses"
+                },
+                {
+                    "permission_id": 7,
+                    "url": "/administration/users",
+                    "name": "Users",
+                    "icon": "bi bi-people",
+                    "slug": "frontend.administration.users"
+                },
+                {
+                    "permission_id": 8,
+                    "url": "/administration/roles",
+                    "name": "Roles",
+                    "icon": "bi bi-person-gear",
+                    "slug": "frontend.administration.roles"
+                }
+            ]
+        }
+    ]
+}

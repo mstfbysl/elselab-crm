@@ -1,0 +1,1 @@
+<textarea class="tinymce" id="edit-project-comments" name="edit-project-comments" rows="4"></textarea>
