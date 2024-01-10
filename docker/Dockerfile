@@ -2,7 +2,7 @@
 FROM webdevops/php-nginx:8.2
 
 # php-fpm.conf file
-COPY /docker/php-fpm.conf /opt/docker/etc/php/fpm/php-fpm.conf
+COPY /docker/application.conf /opt/docker/etc/php/fpm/pool.d/application.conf
 
 # Web Document Root
 ENV WEB_DOCUMENT_ROOT=/app/public
