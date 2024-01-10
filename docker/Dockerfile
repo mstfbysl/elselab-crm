@@ -1,4 +1,4 @@
-# We are using the webdevops/php-nginx based Docker image
+# Use webdevops/php-nginx as the base image
 FROM webdevops/php-nginx:8.2
 
 # Web Document Root
@@ -19,6 +19,17 @@ RUN mkdir -p /var/log/nginx && mkdir -p /var/cache/nginx
 
 # Install dependencies by running Composer
 RUN composer install --optimize-autoloader --ignore-platform-reqs
+
+# Install Node.js and npm
+RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
+RUN apt-get update && apt-get install -y nodejs
+
+# Install Yarn
+RUN npm install -g yarn
+
+# Run Yarn install and production build
+RUN yarn install
+RUN yarn production
 
 # Change ownership to 'application' user
 RUN chown -R application:application .
