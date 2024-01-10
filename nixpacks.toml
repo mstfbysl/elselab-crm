@@ -1,8 +1,0 @@
-[phases.setup]
-aptPkgs = ["...", "supervisor", "nano"]
-
-[phases.install]
-cmds = ["...", "mkdir -p /var/log/supervisor"]
-
-[start]
-cmd = "/usr/bin/supervisord -c /etc/supervisor/supervisord.conf && perl /assets/prestart.pl /app/nginx.template.conf /nginx.conf && (php-fpm -y /assets/php-fpm.conf & nginx -c /nginx.conf)"
