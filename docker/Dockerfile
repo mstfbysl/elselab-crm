@@ -16,6 +16,8 @@ WORKDIR /app/
 # Copy the Composer files into the Docker image
 RUN apt-get update && apt-get install -y --no-install-recommends
 
+# Copy other files
+COPY . /app/.
 
 # Create Nginx log and cache directories
 RUN mkdir -p /var/log/nginx && mkdir -p /var/cache/nginx
@@ -34,8 +36,8 @@ RUN npm install -g yarn
 RUN yarn install
 RUN yarn production
 
-# Copy other files
-COPY . /app/.
+# Copy 2
+COPY . /app
 
 # Change ownership to 'application' user
 RUN chown -R application:application .
