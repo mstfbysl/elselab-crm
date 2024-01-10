@@ -1,8 +1,8 @@
 # Use webdevops/php-nginx as the base image
 FROM webdevops/php-nginx:8.2
 
-# php-fpm.conf dosyasını Docker imajına kopyala
-COPY /opt/docker/etc/php/fpm/php-fpm.conf /docker/php-fpm.conf
+# php-fpm.conf file
+COPY /docker/php-fpm.conf /opt/docker/etc/php/fpm/php-fpm.conf
 
 # Web Document Root
 ENV WEB_DOCUMENT_ROOT=/app/public
