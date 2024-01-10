@@ -91,6 +91,9 @@ mix.then(() => {
   }
 })
 
+mix.version();
+
+
 // if (mix.inProduction()) {
 //   mix.version()
 //   mix.webpackConfig({
