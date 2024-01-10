@@ -10,8 +10,10 @@ ENV WEB_DOCUMENT_ROOT=/app/public
 # PHP Extensions
 ENV PHP_DISMOD=calendar,exiif,ffi,ldap,mysqli,imap,sockets,sysvmsg,sysvsm,sysvshm,shmop,zip,gd,apcu,vips,imagick,amqp
 
+# Workdir
 WORKDIR /app/
 
+# Copy the Composer files into the Docker image
 RUN apt-get update && apt-get install -y --no-install-recommends
 
 # Copy other files
