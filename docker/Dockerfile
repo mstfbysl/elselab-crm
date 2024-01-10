@@ -36,9 +36,6 @@ RUN npm install -g yarn
 RUN yarn install
 RUN yarn production
 
-# Copy 2
-COPY . /app
-
 # Change ownership to 'application' user
 RUN chown -R application:application .
 
