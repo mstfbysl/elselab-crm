@@ -21,7 +21,6 @@ yarn-error.log
 supervisord.log
 supervisord.pid
 
-/docker
 .vscode
 yarn.lock
 /public/mix-manifest.json
