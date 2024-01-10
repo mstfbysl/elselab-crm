@@ -27,8 +27,6 @@ class AuthController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
-        
-
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
@@ -37,8 +35,7 @@ class AuthController extends Controller
 
             return $this->respondSuccess([], '', 200);
         }
-        
- 
+
         return $this->respondFail('The provided credentials do not match our records!', 401);
     }
 
@@ -47,7 +44,7 @@ class AuthController extends Controller
         $request->validate([
             'email' => ['required', 'email'],
         ]);
-        
+
         $user = User::where('email', $request->email)->first();
 
         if(!$user){
@@ -74,7 +71,7 @@ class AuthController extends Controller
             'code' => 'required',
             'password' => 'required',
         ]);
-        
+
         $password_reset = PasswordReset::where('token', $request->token)->first();
 
         if(!$password_reset){

@@ -2,10 +2,7 @@ const { default: axios } = require('axios');
 require('inputmask');
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-
-window.base_path = process.env.MIX_APP_URL;
-//window.base_path = 'https://crm.aci.lt';
-//indow.base_path = 'http://localhost:3000';
+window.base_path = 'https://dashboard.elselab.io/api';
 
 (function (window) {
     'use strict';
@@ -47,7 +44,7 @@ window.base_path = process.env.MIX_APP_URL;
         })
 
     }
-    
+
     window.CurrencyMask = (selector) => {
         Inputmask("currency", {rightAlign: false}).mask(selector);
     }
@@ -67,11 +64,11 @@ window.base_path = process.env.MIX_APP_URL;
             case 'info':
                 return toastr.info(text, 'Info!', default_config);
                 break;
-        
+
             case 'success':
                 return toastr.success(text, 'Success!', default_config);
                 break;
-        
+
             case 'warning':
                 return toastr.warning(text, 'Warning!', default_config);
                 break;
@@ -79,7 +76,7 @@ window.base_path = process.env.MIX_APP_URL;
             case 'error':
                 return toastr.error(text, 'Error!', default_config);
                 break;
-        
+
             default:
                 return toastr.info(text, 'Info!', default_config);
                 break;
@@ -127,7 +124,7 @@ window.base_path = process.env.MIX_APP_URL;
     window.AxiosUPLOAD = (path, form_data, succeed) => {
         return axios.post(base_path + path, form_data, upload_axios_config).then(succeed);
     }
-    
+
     window.FillSelect2 = async (selectId, url, multiple = false, selectedValues = [], requestBody = null, onChangeEvent = null) => {
 
         let selectObj = $(selectId);
@@ -163,7 +160,7 @@ window.base_path = process.env.MIX_APP_URL;
                 dropdownParent: selectObj.parent()
             });
         }
-        
+
         if(selectedValues.length > 0){
             selectObj.val(selectedValues);
             selectObj.trigger('change');
@@ -177,7 +174,7 @@ window.base_path = process.env.MIX_APP_URL;
         }
 
         return selectObj;
-        
+
     }
 
     window.FillSelect2Manual = async (selectId, data, multiple = false, selectedValues = []) => {
@@ -195,12 +192,12 @@ window.base_path = process.env.MIX_APP_URL;
             width: '100%',
             dropdownParent: selectObj.parent()
         });
-        
+
         if(selectedValues.length > 0){
             selectObj.val(selectedValues);
             selectObj.trigger('change');
         }
-        
+
     }
 
     window.ResetForms = (FormId = null) => {
@@ -237,7 +234,7 @@ window.base_path = process.env.MIX_APP_URL;
     }
 
     window.CalculateAll = (allItems) => {
-        
+
         let subTotal = 0;
         let taxTotal = 0;
         let total = 0;
