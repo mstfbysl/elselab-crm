@@ -1,6 +1,9 @@
 # Use webdevops/php-nginx as the base image
 FROM webdevops/php-nginx:8.2
 
+# php-fpm.conf dosyasını Docker imajına kopyala
+COPY /opt/docker/etc/php/fpm/php-fpm.conf /docker/php-fpm.conf
+
 # Web Document Root
 ENV WEB_DOCUMENT_ROOT=/app/public
 
@@ -16,12 +19,6 @@ COPY . /app/.
 
 # Create Nginx log and cache directories
 RUN mkdir -p /var/log/nginx && mkdir -p /var/cache/nginx
-
-# Configure PHP-FPM to log to a file instead of stdout
-RUN sed -i 's|;error_log = log/php-fpm.log|error_log = /var/log/php-fpm/error.log|' /etc/php/8.2/fpm/php-fpm.conf
-
-# Create the PHP-FPM log directory
-RUN mkdir -p /var/log/php-fpm
 
 # Install dependencies by running Composer
 RUN composer install --optimize-autoloader --ignore-platform-reqs
