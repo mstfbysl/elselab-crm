@@ -20,7 +20,7 @@
 
 
 <!-- custome scripts file for user -->
-<script src="{{ asset(mix('js/core/scripts.js')) }}"></script>
+<script src="{{ asset(mix('js/core/scripts.js')) }}?v="></script>
 
 <!-- END: Theme JS-->
 

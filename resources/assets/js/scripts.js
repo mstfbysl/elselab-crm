@@ -2,7 +2,7 @@ const { default: axios } = require('axios');
 require('inputmask');
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-window.base_path = 'https://dashboard.elselab.io/api';
+window.base_path = 'https://dashboard.elselab.io';
 
 (function (window) {
     'use strict';
