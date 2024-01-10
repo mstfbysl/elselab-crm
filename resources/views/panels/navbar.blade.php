@@ -6,8 +6,8 @@
       <ul class="nav navbar-nav">
         <li class="nav-item">
           <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="{{ $configData['appLogo'] }}" height="60">
-          </a>
+            <img src="{{ $configData['appLogo'] }}" height="30" style="margin-top: 15px">
+        </a>
         </li>
       </ul>
     </div>
