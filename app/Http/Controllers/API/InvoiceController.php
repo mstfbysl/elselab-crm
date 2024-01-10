@@ -26,7 +26,7 @@ use PDF;
 class InvoiceController extends Controller
 {
     use RespondTrait;
-    
+
     private function calculate_items($items = [])
     {
         $total = 0;
@@ -81,7 +81,7 @@ class InvoiceController extends Controller
             $count = $counter->count + 1;
         }
 
-        $count_padded = str_pad($count, 4, '0', STR_PAD_LEFT); 
+        $count_padded = str_pad($count, 4, '0', STR_PAD_LEFT);
         $slug = substr(date('Y', strtotime($request->date)), 2);
         $invoice_serie = $serie->slug . '-' . $slug . $count_padded;
 
@@ -109,9 +109,9 @@ class InvoiceController extends Controller
         $invoices = Invoice::get()->map(function($invoice){
 
             $client_html = '<div class="d-flex justify-content-left align-items-center"><div class="avatar-wrapper"><div class="avatar bg-light-success me-50"><div class="avatar-content">'.substr($invoice->client->name, 0, 1).'</div></div></div><div class="d-flex flex-column"><h6 class="user-name text-truncate mb-0">'.$invoice->client->name.'</h6><small class="text-truncate text-muted">'.$invoice->client->email.'</small></div></div>';
-           
-            $is_paid = ($invoice->is_paid == 1) ? 'checked' : ''; 
-            $is_accountant = ($invoice->is_accountant == 1) ? 'checked' : ''; 
+
+            $is_paid = ($invoice->is_paid == 1) ? 'checked' : '';
+            $is_accountant = ($invoice->is_accountant == 1) ? 'checked' : '';
 
             return [
                 $invoice->id,
@@ -137,7 +137,7 @@ class InvoiceController extends Controller
                             '.__('locale.Edit').'</a>
                         <a class="dropdown-item" href="/api/invoice/preview/'.$invoice->id.'"><i class="bi bi-eye"></i>
                             '.__('locale.Preview').'</a>
-                        <a class="dropdown-item" href="/api/invoice/download/'.$invoice->id.'"><i class="bi bi-cloud-download"></i> 
+                        <a class="dropdown-item" href="/api/invoice/download/'.$invoice->id.'"><i class="bi bi-cloud-download"></i>
                             '.__('locale.Download').'</a>
                     </div>
                 </div>'
@@ -232,7 +232,7 @@ class InvoiceController extends Controller
         }
 
         $check_items = $this->calculate_items($request->items);
-        
+
         if($check_items['total'] <= 0)
         {
             return $this->respondFail('You have to add at least 1 item to invoice.', 422);
@@ -240,7 +240,7 @@ class InvoiceController extends Controller
 
         DB::beginTransaction();
 
-        try 
+        try
         {
             $create_invoice = Invoice::create([
                 'client_id' => $request->client_id,
@@ -262,7 +262,7 @@ class InvoiceController extends Controller
                 $cost = str_replace(',', '', $i['item_cost']);
                 $quantity = $i['item_quantity'];
                 $tax = ($i['item_tax']) ? $i['item_tax'] : 0;
-    
+
                 if($i['item_cost'] && $i['item_quantity'] && $i['item_title'])
                 {
                     $item_id = InvoiceItem::create([
@@ -285,13 +285,13 @@ class InvoiceController extends Controller
             }, $request->items);
 
             $counter = SystemInvoiceSerieCounter::where('serie_id', $request->serie)->where('year', date('Y', strtotime($request->date)))->orderBy('count', 'desc')->first();
-    
+
             if(!$counter){
                 $count = 1;
             }else{
                 $count = $counter->count + 1;
             }
-            
+
             SystemInvoiceSerieCounter::create([
                 'serie_id' => $request->serie,
                 'year' => date('y'),
@@ -325,7 +325,7 @@ class InvoiceController extends Controller
         }
 
         $check_items = $this->calculate_items($request->items);
-        
+
         if($check_items['total'] <= 0)
         {
             return $this->respondFail('You have to add at least 1 item to invoice.', 422);
@@ -347,19 +347,19 @@ class InvoiceController extends Controller
 
             $items_old = $invoice->items->map(function($i){ return $i->id; })->toArray();
             $items_new = array_map(function($i){ return (int) $i['item_id']; }, $request->items);
-            $items_for_delete  = array_diff($items_old, $items_new); 
+            $items_for_delete  = array_diff($items_old, $items_new);
 
             $items_for_create = array_map(function($i) use ($invoice){
 
                 if(isset($i['item_id']))
-                { 
+                {
                     $id = $i['item_id'];
                     $title = $i['item_title'];
                     $description = $i['item_description'];
                     $cost = str_replace(',', '', $i['item_cost']);
                     $quantity = $i['item_quantity'];
                     $tax = ($i['item_tax']) ? $i['item_tax'] : 0;
-        
+
                     if($i['item_cost'] && $i['item_quantity'] && $i['item_title'])
                     {
                         InvoiceItem::where('id', $id)->update([
@@ -378,7 +378,7 @@ class InvoiceController extends Controller
                     $cost = str_replace(',', '', $i['item_cost']);
                     $quantity = $i['item_quantity'];
                     $tax = ($i['item_tax']) ? $i['item_tax'] : 0;
-        
+
                     if($i['item_cost'] && $i['item_quantity'] && $i['item_title'])
                     {
                         InvoiceItem::create([
@@ -440,11 +440,11 @@ class InvoiceController extends Controller
             'logo' => ($systemSettings->logo_file) ? base64_encode(Storage::get($systemSettings->logo_file->path)) : null
         ];
 
-        if($invoice->type == 'Standartinė'){
+        if($invoice->type == 'Standart'){
             $pdf = PDF::loadView('pdf.invoice.regular', $data);
-        }elseif($invoice->type == 'Išankstinė'){
+        }elseif($invoice->type == 'Preliminary'){
             $pdf = PDF::loadView('pdf.invoice.proforma', $data);
-        }elseif($invoice->type == 'Kreditinė'){
+        }elseif($invoice->type == 'Credit'){
             $pdf = PDF::loadView('pdf.invoice.credit', $data);
         }
 
@@ -483,11 +483,11 @@ class InvoiceController extends Controller
             'logo' => ($systemSettings->logo_file) ? base64_encode(Storage::get($systemSettings->logo_file->path)) : null
         ];
 
-        if($invoice->type == 'Standartinė'){
+        if($invoice->type == 'Standart'){
             $pdf = PDF::loadView('pdf.invoice.regular', $data);
-        }elseif($invoice->type == 'Išankstinė'){
+        }elseif($invoice->type == 'Preliminary'){
             $pdf = PDF::loadView('pdf.invoice.proforma', $data);
-        }elseif($invoice->type == 'Kreditinė'){
+        }elseif($invoice->type == 'Credit'){
             $pdf = PDF::loadView('pdf.invoice.credit', $data);
         }
 

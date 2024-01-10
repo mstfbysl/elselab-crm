@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['Juridinis', 'Privatus']);
+            $table->enum('type', ['Legal', 'Private']);
             $table->string('name');
             $table->string('code')->nullable(true);
             $table->string('address');

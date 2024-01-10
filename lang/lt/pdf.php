@@ -20,7 +20,7 @@ return [
     "Price" => "Kaina",
     "Price per qty" => "Vnt. kaina",
     "SuminText" => "Suma žodžiais",
-    "Proforma" => "Išankstinė sąskaita-faktūra",
+    "Proforma" => "Preliminary sąskaita-faktūra",
     "Serie" => "Serija",
     "Tel" => "Tel",
     "Email" => "El.p",
@@ -33,8 +33,8 @@ return [
     "Rent End" => "Nuomos pabaiga",
     "Equipment list" => "Įrangos sąrašas",
     "Number" => "Numeris",
-    "Credit invoice" => "Kreditinė sąskaita-faktūra",
+    "Credit invoice" => "Credit sąskaita-faktūra",
     "Credit" => "Kreditas",
     "Minus" => "Minus",
-    
+
 ];

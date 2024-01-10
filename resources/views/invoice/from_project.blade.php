@@ -89,7 +89,7 @@
                                 <div class="row">
                                     <div class="col-12 d-flex product-details-border position-relative pe-0">
                                         <div class="row w-100 pe-lg-0 pe-1 py-2">
-                                            <div class="col-lg-5 col-12 mb-lg-0 mb-2 mt-lg-0 mt-2">       
+                                            <div class="col-lg-5 col-12 mb-lg-0 mb-2 mt-lg-0 mt-2">
                                                 <p class="card-text col-title mb-md-2 mb-0">{{ __('locale.Title') }} / {{ __('locale.Description') }}</p>
                                                 <input type="hidden" name="item_id" id="item_id">
                                                 <input type="text" class="form-control" placeholder="{{ __('locale.Item Title') }}" name="item_title">
@@ -179,8 +179,8 @@
         <!-- INVOICE: Sidebar -->
         <div class="col-xl-3 col-md-4 col-12">
             <div class="card">
-                <div class="card-body">    
-                    <a href="/invoices" class="btn btn-outline-info w-100 mb-75"><i class="bi bi-arrow-left"></i> {{ __('locale.Back') }}</a>    
+                <div class="card-body">
+                    <a href="/invoices" class="btn btn-outline-info w-100 mb-75"><i class="bi bi-arrow-left"></i> {{ __('locale.Back') }}</a>
                     <button type="button" class="btn btn-success w-100" onclick="onCreateInvoice()"><i class="bi bi-check"></i> {{ __('locale.Create') }}</button>
                 </div>
             </div>
@@ -220,15 +220,15 @@
 <script type="text/javascript">
 $(async function() {
     'use strict';
-    
+
     const id = $('#project-id').val();
 
     let logged_user_id = "{{ request()->user()->id }}";
 
-    FillSelect2('#create-invoice-user-id', '/api/user/list-all', false, [logged_user_id]); 
+    FillSelect2('#create-invoice-user-id', '/api/user/list-all', false, [logged_user_id]);
 
     FillSelect2('#create-invoice-serie', '/api/invoice-serie/list-all', false, []);
-    FillSelect2('#create-invoice-type', '/api/system-definition/list-filter', false, ['Standartinė'], {type: 'invoice_type'});  
+    FillSelect2('#create-invoice-type', '/api/system-definition/list-filter', false, ['Standart'], {type: 'invoice_type'});
 
     let serie = $('#create-invoice-serie').val();
 
@@ -306,7 +306,7 @@ $(async function() {
         },
         ready: function (){
             CurrencyMask('.item_cost');
-            
+
             $('.create-invoice-item-list input').keyup(itemCalculator);
             $('.create-invoice-item-list select').change(itemCalculator);
         },
@@ -321,15 +321,15 @@ $(async function() {
 
             $('#create-invoice-no').val(res.data.invoice_no);
 
-            FillSelect2('#create-invoice-client-id', '/api/client/list-all', false, [res.data.client_id]); 
-            FillSelect2('#create-invoice-user-id', '/api/user/list-all', false, [res.data.owner_id]); 
-        
+            FillSelect2('#create-invoice-client-id', '/api/client/list-all', false, [res.data.client_id]);
+            FillSelect2('#create-invoice-user-id', '/api/user/list-all', false, [res.data.owner_id]);
+
             if(res.data.repeater){
                 $repeater.setList(res.data.repeater);
                 isFirst = 0;
                 feather.replace();
                 window.itemCalculator();
-            }            
+            }
         }
     }, (error) => {
          console.log(error);
@@ -410,7 +410,7 @@ $(async function() {
             let items = repeaterVal['items'];
             let project_id = id;
             let serie = $('#create-invoice-serie').val();
-            
+
             AxiosPOST('/api/invoice/create', {
                 client_id,
                 user_id,
@@ -427,7 +427,7 @@ $(async function() {
                     location.href = '/invoices';
                 }
             })
-            
+
 
         }
         catch (error)
@@ -440,7 +440,7 @@ $(async function() {
     /* Create Invoice */
 
     /* Create Client Modal */
-    FillSelect2('#create-client-type', '/api/system-definition/list-filter', false, [], {type: 'client_type'}); 
+    FillSelect2('#create-client-type', '/api/system-definition/list-filter', false, [], {type: 'client_type'});
 
     var createClientForm = $('#createClientForm');
     var createClientModal = new bootstrap.Modal(document.getElementById('createClientModal'));
@@ -485,7 +485,7 @@ $(async function() {
         let vat_number = $('#create-client-vat-number').val();
         let comment = $('#create-client-comment').val();
         let contract = $('#create-client-contract').attr('data-file-id');
-        
+
         AxiosPOST('/api/client/create', {type, name, code, address, phone, email, vat_number, comment, contract}, (r) => {
 
             let response = r.data;
@@ -494,13 +494,13 @@ $(async function() {
 
                 createClientModal.hide();
                 ToastAlert(response.message, 'success');
-                FillSelect2('#create-invoice-client-id', '/api/client/list-all', false, []); 
+                FillSelect2('#create-invoice-client-id', '/api/client/list-all', false, []);
 
             }
 
         });
-    });   
-    /* Create Client Modal */    
+    });
+    /* Create Client Modal */
 
     /* Serie Generation */
     function update_serie(serie, date){
@@ -512,7 +512,7 @@ $(async function() {
         });
     }
 
-    /* Serie Generation */ 
+    /* Serie Generation */
 
 });
 </script>

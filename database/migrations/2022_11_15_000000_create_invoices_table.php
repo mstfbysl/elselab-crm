@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedInteger('client_id');
             $table->unsignedInteger('created_user_id');
             $table->string('invoice_no')->unique('invoice_no_uniq_index');
-            $table->enum('type', ['Standartinė', 'Išankstinė', 'Kreditinė']);
+            $table->enum('type', ['Standart', 'Preliminary', 'Credit']);
             $table->date('date');
             $table->unsignedDouble('sub_total');
             $table->unsignedDecimal('total', 10, 2);

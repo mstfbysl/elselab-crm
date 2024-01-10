@@ -32,12 +32,12 @@ class DatabaseSeeder extends Seeder
         \App\Models\SystemDefinitions::create(['type' => 'is_vat_member', 'title' => 'Yes']);
         \App\Models\SystemDefinitions::create(['type' => 'is_vat_member', 'title' => 'No']);
 
-        \App\Models\SystemDefinitions::create(['type' => 'client_type', 'title' => 'Juridinis', 'is_custom' => 1, 'value' => 'Juridinis']);
-        \App\Models\SystemDefinitions::create(['type' => 'client_type', 'title' => 'Privatus', 'is_custom' => 1, 'value' => 'Privatus']);
+        \App\Models\SystemDefinitions::create(['type' => 'client_type', 'title' => 'Legal', 'is_custom' => 1, 'value' => 'Legal']);
+        \App\Models\SystemDefinitions::create(['type' => 'client_type', 'title' => 'Private', 'is_custom' => 1, 'value' => 'Private']);
 
-        \App\Models\SystemDefinitions::create(['type' => 'invoice_type', 'title' => 'Standartinė', 'is_custom' => 1, 'value' => 1]);
-        \App\Models\SystemDefinitions::create(['type' => 'invoice_type', 'title' => 'Išankstinė', 'is_custom' => 1, 'value' => 2]);
-        \App\Models\SystemDefinitions::create(['type' => 'invoice_type', 'title' => 'Kreditinė', 'is_custom' => 1, 'value' => 3]);
+        \App\Models\SystemDefinitions::create(['type' => 'invoice_type', 'title' => 'Standart', 'is_custom' => 1, 'value' => 1]);
+        \App\Models\SystemDefinitions::create(['type' => 'invoice_type', 'title' => 'Preliminary', 'is_custom' => 1, 'value' => 2]);
+        \App\Models\SystemDefinitions::create(['type' => 'invoice_type', 'title' => 'Credit', 'is_custom' => 1, 'value' => 3]);
 
         \App\Models\SystemDefinitions::create(['type' => 'purchase_invoice_item_type', 'title' => 'Pardavimui', 'is_custom' => 1, 'value' => 'Pardavimui']);
         \App\Models\SystemDefinitions::create(['type' => 'purchase_invoice_item_type', 'title' => 'Naudojimui', 'is_custom' => 1, 'value' => 'Naudojimui']);
@@ -74,13 +74,13 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\SystemPermission::create(['id' => 26, 'title' => 'Invoices']);
         \App\Models\SystemPermission::create(['id' => 27, 'title' => 'Create Invoice']);
-        
+
         \App\Models\SystemPermission::create(['id' => 32, 'title' => 'Company Expenses']);
         \App\Models\SystemPermission::create(['id' => 33, 'title' => 'Create Company Expense']);
 
         \App\Models\SystemPermission::create(['id' => 35, 'title' => 'User Payments']);
         \App\Models\SystemPermission::create(['id' => 36, 'title' => 'Create User Payment']);
-        
+
         \App\Models\SystemPermission::create(['id' => 38, 'title' => 'Fix Assets']);
         \App\Models\SystemPermission::create(['id' => 39, 'title' => 'Create Fix Asset']);
 
@@ -89,7 +89,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\SystemPermission::create(['id' => 42, 'title' => 'Edit Service']);
 
         \App\Models\SystemPermission::create(['id' => 50, 'title' => 'Numbers / Profits']);
-        
+
         \App\Models\Role::create(['title' => 'Admin']);
         \App\Models\Role::create(['title' => 'Accountant']);
         \App\Models\Role::create(['title' => 'Project Manager']);
@@ -109,7 +109,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Euro',
             'symbol' => '€'
         ]);
-        
+
         \App\Models\SystemLabel::create([
             'title' => 'Onto',
             'color' => '#ffaacc'
@@ -124,7 +124,7 @@ class DatabaseSeeder extends Seeder
             'title' => 'ElseLab',
             'color' => '#00ff00'
         ]);
-        
+
         \App\Models\ProjectStatus::create([
             'title' => 'Planning',
             'color' => '#08a0b4'
