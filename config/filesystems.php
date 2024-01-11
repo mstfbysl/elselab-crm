@@ -35,12 +35,12 @@ return [
         //     'root' => storage_path('app'),
         // ],
 
-        // 'public' => [
-        //     'driver' => 'local',
-        //     'root' => storage_path('app/public'),
-        //     'url' => env('APP_URL').'/storage',
-        //     'visibility' => 'public',
-        // ],
+        'public' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
         'google' => [
             'driver' => 'google',
             'clientId' => env('GOOGLE_DRIVE_CLIENT_ID'),
