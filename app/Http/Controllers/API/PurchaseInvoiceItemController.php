@@ -20,7 +20,7 @@ class PurchaseInvoiceItemController extends Controller
 
     public function list_short_term()
     {
-        $items = PurchaseInvoiceItem::where('quantity', '!=', DB::raw('used_quantity'))->where('type', 'Pardavimui')->get()->map(function($item){
+        $items = PurchaseInvoiceItem::where('quantity', '!=', DB::raw('used_quantity'))->where('type', 'For Sale')->get()->map(function($item){
 
             $item_cost = Helpers::human_format($item->cost);
             $item_string = "{$item->invoice->title} / {$item->title} / {$item_cost} ({$item->remaining_quantity})";
@@ -40,7 +40,7 @@ class PurchaseInvoiceItemController extends Controller
 
     public function list_long_term()
     {
-        $items = PurchaseInvoiceItem::where('quantity', '!=', DB::raw('used_quantity'))->where('type', 'Naudojimui')->get()->map(function($item){
+        $items = PurchaseInvoiceItem::where('quantity', '!=', DB::raw('used_quantity'))->where('type', 'For Use')->get()->map(function($item){
 
             $item_cost = Helpers::human_format($item->cost);
             $item_string = "{$item->invoice->title} / {$item->title} / {$item_cost} ({$item->remaining_quantity})";
@@ -60,7 +60,7 @@ class PurchaseInvoiceItemController extends Controller
 
     public function list_fix_asset()
     {
-        $items = PurchaseInvoiceItem::where('type', 'Naudojimui')->get()->map(function($item){
+        $items = PurchaseInvoiceItem::where('type', 'For Use')->get()->map(function($item){
 
             $fa = FixAsset::where('purchase_invoice_item_id', $item->id)->first();
 
@@ -74,7 +74,7 @@ class PurchaseInvoiceItemController extends Controller
             if(!$ce && !$up){
                 return;
             }
-    
+
             $item_cost = Helpers::human_format($item->cost);
             $item_string = "{$item->invoice->title} / {$item->title} / {$item_cost}";
 
@@ -93,7 +93,7 @@ class PurchaseInvoiceItemController extends Controller
             'purchase_invoice_id' => 'required',
         ]);
 
-                
+
 
         $items = PurchaseInvoiceItem::where('purchase_invoice_id', $request->purchase_invoice_id)->get()->map(function($item){
             $popover_content = " ";
@@ -147,7 +147,7 @@ class PurchaseInvoiceItemController extends Controller
             'quantity' => 'required',
             'cost' => 'required',
         ]);
-        
+
         $invoice = PurchaseInvoice::find($request->purchase_invoice_id);
 
         if(!$invoice){
@@ -174,7 +174,7 @@ class PurchaseInvoiceItemController extends Controller
         {
             $invoice->used_total += $total_cost;
             $invoice->save();
-    
+
             return $this->respondSuccess($create->id, 'Purchase Invoice Item added successfully.');
         }
         else
@@ -226,7 +226,7 @@ class PurchaseInvoiceItemController extends Controller
         {
             $invoice->used_total = $new_total;
             $invoice->save();
-    
+
             return $this->respondSuccess($update, 'Purchase Invoice Item saved successfully.');
         }
         else

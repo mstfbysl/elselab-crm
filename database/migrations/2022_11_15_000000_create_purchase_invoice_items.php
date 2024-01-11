@@ -10,7 +10,7 @@ return new class extends Migration
     // 2 - 30 Cost - 3 piece
     // 3 - 15 Cost - 10 piece
 
-    
+
     /**
      * Run the migrations.
      *
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedInteger('client_id');
             $table->unsignedInteger('purchase_invoice_id');
-            $table->enum('type', ['Pardavimui', 'Naudojimui']);
+            $table->enum('type', ['For Sale', 'For Use']);
             $table->string('serial')->nullable(true);
             $table->string('title');
             $table->unsignedInteger('quantity');

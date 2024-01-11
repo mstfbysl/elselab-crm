@@ -15,17 +15,17 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         \App\Models\SystemSetting::create([
-            'app_name' => 'Onto CRM',
+            'app_name' => 'CRM',
             'company_is_vat_member' => 1,
             'company_currency' => 1,
-            'company_vat_number' => 'LT100015521918',
-            'company_name' => 'MB OntoLT',
-            'company_code' => '306136330',
-            'company_address' => 'Santariškių g. 117-5, LT-08465 Vilnius',
-            'company_email' => 'info@onto.lt',
-            'company_phone' => '+370 676 93333',
+            'company_vat_number' => 'SE123456789101',
+            'company_name' => 'Demo Shopify Store LTD',
+            'company_code' => '33344455566',
+            'company_address' => '2 Church Road CANTERBURY CT64 4JS',
+            'company_email' => 'demo@demo.com',
+            'company_phone' => '+44 123 456 789',
             'company_bank_name' => 'Revolut Bank UAB',
-            'company_bank_iban' => 'LT24 3250 0478 1846 3475',
+            'company_bank_iban' => 'XX123456789101112131415',
             'company_bank_code' => 'REVOLT21'
         ]);
 
@@ -39,12 +39,12 @@ class DatabaseSeeder extends Seeder
         \App\Models\SystemDefinitions::create(['type' => 'invoice_type', 'title' => 'Preliminary', 'is_custom' => 1, 'value' => 2]);
         \App\Models\SystemDefinitions::create(['type' => 'invoice_type', 'title' => 'Credit', 'is_custom' => 1, 'value' => 3]);
 
-        \App\Models\SystemDefinitions::create(['type' => 'purchase_invoice_item_type', 'title' => 'Pardavimui', 'is_custom' => 1, 'value' => 'Pardavimui']);
-        \App\Models\SystemDefinitions::create(['type' => 'purchase_invoice_item_type', 'title' => 'Naudojimui', 'is_custom' => 1, 'value' => 'Naudojimui']);
+        \App\Models\SystemDefinitions::create(['type' => 'purchase_invoice_item_type', 'title' => 'For Sale', 'is_custom' => 1, 'value' => 'For Sale']);
+        \App\Models\SystemDefinitions::create(['type' => 'purchase_invoice_item_type', 'title' => 'For Use', 'is_custom' => 1, 'value' => 'For Use']);
 
-        \App\Models\SystemDefinitions::create(['type' => 'user_payment_type', 'title' => 'Prekė/Paslauga', 'is_custom' => 1, 'value' => 'Item']);
-        \App\Models\SystemDefinitions::create(['type' => 'user_payment_type', 'title' => 'Kuras', 'is_custom' => 1, 'value' => 'Fuel']);
-        \App\Models\SystemDefinitions::create(['type' => 'user_payment_type', 'title' => 'Atlyginimas', 'is_custom' => 1, 'value' => 'Cash']);
+        \App\Models\SystemDefinitions::create(['type' => 'user_payment_type', 'title' => 'Product/Service ', 'is_custom' => 1, 'value' => 'Item']);
+        \App\Models\SystemDefinitions::create(['type' => 'user_payment_type', 'title' => 'Fuel', 'is_custom' => 1, 'value' => 'Fuel']);
+        \App\Models\SystemDefinitions::create(['type' => 'user_payment_type', 'title' => 'Salary', 'is_custom' => 1, 'value' => 'Cash']);
 
 
 
@@ -96,13 +96,12 @@ class DatabaseSeeder extends Seeder
         \App\Models\Role::create(['title' => 'Standart User']);
 
         \App\Models\SystemInvoiceSerie::create([
-            'slug' => 'MK'
+            'slug' => 'OFR'
         ]);
 
         \App\Models\SystemOfferSerie::create([
-            'slug' => 'PS'
+            'slug' => 'PRS'
         ]);
-
 
         \App\Models\SystemCurrency::create([
             'short_code' => 'EUR',
@@ -110,18 +109,30 @@ class DatabaseSeeder extends Seeder
             'symbol' => '€'
         ]);
 
+        \App\Models\SystemCurrency::create([
+            'short_code' => 'USD',
+            'description' => 'US Dollar',
+            'symbol' => '$'
+        ]);
+
+        \App\Models\SystemCurrency::create([
+            'short_code' => 'GPB',
+            'description' => 'Sterling Pound',
+            'symbol' => '£'
+        ]);
+
         \App\Models\SystemLabel::create([
-            'title' => 'Onto',
+            'title' => 'Urgent',
             'color' => '#ffaacc'
         ]);
 
         \App\Models\SystemLabel::create([
-            'title' => 'ACI',
+            'title' => 'Medium',
             'color' => '#00ff00'
         ]);
 
         \App\Models\SystemLabel::create([
-            'title' => 'ElseLab',
+            'title' => 'Easy',
             'color' => '#00ff00'
         ]);
 
@@ -148,16 +159,16 @@ class DatabaseSeeder extends Seeder
         $user_id = \App\Models\User::create([
             'is_main_admin' => 1,
             'user_role_id' => 1,
-            'name_surname' => 'Marius Kirkliauskas',
-            'email' => 'marius@onto.lt',
-            'password' => Hash::make('marelis')
+            'name_surname' => 'Mustafa Baysal',
+            'email' => 'demo@demo.com',
+            'password' => Hash::make('demo')
         ]);
 
         \App\Models\Client::create([
-            'name' => 'VšĮ Just Projects',
-            'code' => '303043967',
-            'address' => 'Santariškių g. 117-5, LT-08465 Vilnius',
-            'vat_number' => 'LT100013608310'
+            'name' => 'Demo Company LTD',
+            'code' => '33344455566',
+            'address' => '2 Church Road CANTERBURY CT64 4JS',
+            'vat_number' => 'GB123456'
         ]);
     }
 }
