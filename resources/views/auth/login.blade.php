@@ -61,7 +61,7 @@ $configData = Helper::applClasses();
               <span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
             </div>
           </div>
-          <button class="g-recaptcha btn btn-primary w-100" data-sitekey="6LesxsUpAAAAAFJiLQcbBdOnUYPnaKuWoc_lS5QM" data-callback='onSubmit' data-action='submit'>{{ __('locale.Submit') }}</button>
+          <button class="g-recaptcha btn btn-primary w-100" data-sitekey="{{ env('GOOGLE_SITEKEY') }}" data-callback='onSubmit' data-action='submit'>{{ __('locale.Submit') }}</button>
         </form>
       </div>
     </div>
